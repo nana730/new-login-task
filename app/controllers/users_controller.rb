@@ -26,7 +26,13 @@ before_action :correct_user, only: [:show]
 
   def update
     @user = User.find(params[:id])
-    flash[:notice] = "アカウントを更新しました"
+    if @user.update(user_params)
+      redirect_to user_path, notice: t('.updated')
+    elsif @user.name.blank?
+      redirect_to user_path(@user),notice:"タイトルを入力してください"
+    else
+      render :edit
+    end
   end
 
   def edit
@@ -41,7 +47,6 @@ before_action :correct_user, only: [:show]
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "アカウントを削除しました"
-    redirect_to root_path
   end
 
 

@@ -21,7 +21,9 @@ class TasksController < ApplicationController
   def create
     if logged_in?
     @task = current_user.tasks.new(task_params)
-    if @task.save
+    if @task.title.blank?
+      redirect_to new_task_path, notice: "タイトルを入力してください"
+    elsif @task.save
       redirect_to tasks_path, notice: t('.created')
     else
       render :new
@@ -48,6 +50,8 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       redirect_to tasks_path, notice: t('.updated')
+    elsif @task.title.blank?
+      redirect_to edit_task_path(@task),notice:"タイトルを入力してください"
     else
       render :edit
     end

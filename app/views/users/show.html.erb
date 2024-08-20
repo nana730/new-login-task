@@ -1,8 +1,7 @@
-<%= render 'form', user: @user %>
 
 <h1>アカウント詳細ページ</h1>
 <p>名前:<%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
 
 <a href="<%= edit_user_path(@user) %>" id:="edit-user">編集</a> |
-<a href="<%= new_user_path %>" id:="destroy-user">削除</a>
+<%= link_to '削除', user_path, method: :delete, data: { confirm: '本当に削除しますか？' } %>
