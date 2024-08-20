@@ -10,6 +10,18 @@
   </head>
 
   <body>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+  <% if logged_in? %>
+  <a href="<%= user_path(current_user.id) %>" id="my-account">アカウント</a>
+  <%= link_to 'ログアウト', session_path(current_user.id), method: :delete, id: "sign-out" %>
+  <a href="<%= tasks_path(current_user.id) %>" id="tasks-index">タスク一覧</a>
+  <a href="<%= tasks_path(current_user.id) %>" id="new-task">タスクを登録する</a>
+  <% else %>
+  <a href="<%= new_user_path %>" id="sign-up">アカウント登録</a>
+  <a href="<%= new_session_path %>" id="sign-in">ログイン</a>
+  <% end %>
     <p id="notice"><%= notice %></p>
     <%= yield %>
   </body>
