@@ -5,7 +5,6 @@ class TasksController < ApplicationController
   def index
     if logged_in?
         @tasks = current_user.tasks
-        flash.now[:notice] = 'ログインしました'
     else
         redirect_to session_path,notice:"ログインしてください"
       end
@@ -39,6 +38,11 @@ class TasksController < ApplicationController
   end
 
   def edit
+    if logged_in?
+      @task = Task.find(params[:id])
+      else
+        redirect_to session_path,notice:"ログインしてください"
+      end
   end
 
   def update

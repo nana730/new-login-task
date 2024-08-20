@@ -15,10 +15,10 @@
   <% end %>
   <ul class= "global_nav">
   <% if logged_in? %>
-  <li><a href="<%= user_path(current_user.id) %>" id="my-account">アカウント</a></li>
+    <li><a href="<%= tasks_path(current_user.id) %>" id="tasks-index">タスク一覧</a></li>
+    <li><a href="<%= tasks_path(current_user.id) %>" id="new-task">タスクを登録する</a></li>
+    <li><a href="<%= user_path(current_user.id) %>" id="my-account">アカウント</a></li>
   <li><%= link_to 'ログアウト', session_path(current_user.id), method: :delete, id: "sign-out" %></li>
-  <li><a href="<%= tasks_path(current_user.id) %>" id="tasks-index">タスク一覧</a></li>
-  <li><a href="<%= tasks_path(current_user.id) %>" id="new-task">タスクを登録する</a></li>
 <% else %>
   <li><a href="<%= new_user_path %>" id="sign-up">アカウント登録</a></li>
   <li><a href="<%= new_session_path %>" id="sign-in">ログイン</a></li>

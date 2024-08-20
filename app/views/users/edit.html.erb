@@ -1,4 +1,6 @@
 
+<%= render 'form', user: @user %>
+
 <h1>アカウント編集ページ</h1>
 <%= form_with(model: @user, local: true) do |f| %>
   <%= f.label :名前 %>
@@ -9,8 +11,11 @@
   <%= f.password_field :password %>
   <%= f.label :パスワード（確認） %>
   <%= f.password_field :password_confirmation %>
-<a href="<%= user_path(@user) %>" id:"edit-user">更新</a> <% if flash[:notice] %>
+  <div class="edit_nav">
+<a href="<%= user_path(@user) %>" >更新</a> <
+% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %> |
 <%= link_to "戻る", user_path(@user.id), id: "back" %>
+</div>
 <% end %>

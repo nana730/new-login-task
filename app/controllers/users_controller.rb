@@ -17,7 +17,11 @@ before_action :correct_user, only: [:show]
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+      else
+        redirect_to session_path,notice:"ログインしてください"
+      end
   end
 
   def update
@@ -26,7 +30,18 @@ before_action :correct_user, only: [:show]
   end
 
   def edit
+    if logged_in?
+      @user = User.find(params[:id])
+      else
+        redirect_to session_path,notice:"ログインしてください"
+      end
+  end
+
+  def destroy
     @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "アカウントを削除しました"
+    redirect_to root_path
   end
 
 
