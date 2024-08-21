@@ -17,19 +17,14 @@ before_action :correct_user, only: [:show]
   end
 
   def show
-    if logged_in?
+    
       @user = User.find(params[:id])
-      else
-        redirect_to session_path,notice:"ログインしてください"
-      end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path, notice: t('.updated')
-    elsif @user.name.blank?
-      redirect_to user_path(@user),notice:"タイトルを入力してください"
+      redirect_to user_path, notice:  "アカウントを更新しました"
     else
       render :edit
     end
