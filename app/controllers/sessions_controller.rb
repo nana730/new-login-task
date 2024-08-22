@@ -8,7 +8,7 @@ skip_before_action :login_required, only: [:new, :create]
     user = User.find_by(email: params[:session][:email].downcase)
     if user &.authenticate (params[:session][:password])
       session[:user_id] = user.id
-      flash.now[:notice] = 'ログインしました'
+      flash.now[:notice] = "ログインしました"
       redirect_to tasks_path(user.id)
     else
       flash.now[:danger] = 'メールアドレスまたはパスワードに誤りがあります'
