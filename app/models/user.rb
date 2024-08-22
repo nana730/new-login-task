@@ -4,6 +4,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: {minimum: 6}
-  validates :password_confirmation, presence: true, confirmation: { message: 'パスワード（確認）とパスワードの入力が一致しません' }
+  validates :password_confirmation, presence: true
 
 end
