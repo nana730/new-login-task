@@ -17,7 +17,6 @@ before_action :correct_user, only: [:show]
   end
 
   def show
-    
       @user = User.find(params[:id])
   end
 
@@ -33,9 +32,9 @@ before_action :correct_user, only: [:show]
   def edit
     if logged_in?
       @user = User.find(params[:id])
-      else
-        redirect_to session_path,notice:"ログインしてください"
-      end
+    else
+      redirect_to login_path
+    end
   end
 
   def destroy
