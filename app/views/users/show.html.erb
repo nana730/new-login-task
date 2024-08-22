@@ -1,6 +1,9 @@
+
 <h1>アカウント詳細ページ</h1>
 <p>名前:<%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
 
-<a href="<%= edit_user_path(@user) %>" id:="edit-user">編集</a> |
-<a href="<%= new_user_path %>" id:="destroy-user">削除</a>
+<div class="show_nav">
+<%= link_to "編集", edit_user_path(@user), id: "edit-user" %> |
+<%= link_to "削除", user_path, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, id: "destroy-user" %>
+</div>
