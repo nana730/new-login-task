@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.new
   end
 
-  def  create
+  def create
     @task = current_user.tasks.new(task_params)
     if @task.save
       redirect_to tasks_path, notice: t('.created')
