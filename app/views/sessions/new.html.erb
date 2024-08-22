@@ -4,10 +4,12 @@
   <%= f.label :メールアドレス %>
   <%= f.email_field :email %>
   </div>
+  
   <div class="form-field">
   <%= f.label :パスワード %>
   <%= f.password_field :password, id: "create_session" %>
   </div>
+
   <div class="form-field">
     <%= f.submit "ログイン", id: "create-session" %>
     </div>

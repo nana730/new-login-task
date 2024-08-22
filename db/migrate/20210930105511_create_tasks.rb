@@ -5,6 +5,7 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.text :content
       t.bigint "user_id", null: false
 
+      
       t.timestamps
 
       t.index ["user_id"], name: "index_users_on_user_id"
